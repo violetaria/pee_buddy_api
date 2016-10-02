@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.from_facebook_token(params_for_create[:token], params_for_create[:user_id], params_for_create[:expires_at])
-    session[:user_id] = @user.id
     render "create.json.jbuilder", status: :accepted
   end
 
