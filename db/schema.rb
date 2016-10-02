@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929121306) do
+ActiveRecord::Schema.define(version: 20161002190527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "place_id",   null: false
+    t.float    "lat",        null: false
+    t.float    "lng",        null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_locations_on_place_id", using: :btree
+  end
+
+  create_table "rating_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.float    "rating",         null: false
+    t.integer  "rating_type_id"
+    t.integer  "location_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["location_id"], name: "index_ratings_on_location_id", using: :btree
+    t.index ["rating_type_id"], name: "index_ratings_on_rating_type_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -27,4 +53,6 @@ ActiveRecord::Schema.define(version: 20160929121306) do
     t.datetime "updated_at",           null: false
   end
 
+  add_foreign_key "ratings", "locations"
+  add_foreign_key "ratings", "rating_types"
 end

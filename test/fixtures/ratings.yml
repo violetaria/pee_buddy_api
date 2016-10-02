@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 
+  rating_type: one
+  location: one
+
+two:
+  rating: 
+  rating_type: two
+  location: two
