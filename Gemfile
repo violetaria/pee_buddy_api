@@ -9,7 +9,7 @@ gem 'fb_graph2'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'httparty'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
