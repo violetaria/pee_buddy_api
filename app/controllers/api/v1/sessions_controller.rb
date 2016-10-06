@@ -1,13 +1,8 @@
-class SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
 
   def create
     @user = User.from_facebook_token(params_for_create[:token], params_for_create[:user_id], params_for_create[:expires_at])
     render "create.json.jbuilder", status: :accepted
-  end
-
-  def destroy
-    session[:user_id] = nil
-    render :nohead
   end
 
   private

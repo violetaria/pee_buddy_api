@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+class Api::V1::LocationsController < ApplicationController
 
   def index
     type = 'gas_station'
