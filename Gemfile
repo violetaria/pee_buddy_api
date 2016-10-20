@@ -17,6 +17,8 @@ gem 'httparty'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry'
+  gem 'fabricator'
+  gem 'faker'
 end
 
 group :development do
