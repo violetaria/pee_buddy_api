@@ -13,4 +13,13 @@ class GooglePlacesApi
     response['results']
   end
 
+  def self.find_close_places(lat,lng)
+    response = GooglePlacesApi.get("/nearbysearch/json",
+    query: { 'location' => "#{lat},#{lng}",
+    'radius'  => '100',
+    'sensor'  => 'true',
+    'key'     => "#{ENV['GOOGLE_API_KEY']}"})
+    response['results']
+  end
+
 end
