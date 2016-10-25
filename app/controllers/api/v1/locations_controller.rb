@@ -12,16 +12,11 @@ class Api::V1::LocationsController < ApplicationController
   end
 
   def index
-    # type = 'gas_station'
-    # results = GooglePlacesApi.nearby_search(params[:lat],params[:lng],type)
-    # binding.pry
-    # results.map do |result|
-    #   Location.find_or_create_by!(place_id: result['place_id'],
-    #                               lat: result['geometry']['location']['lat'],
-    #                               lng: result['geometry']['location']['lng'],
-    #                               name: result['name'])
-    # end
-    @locations = Location.includes(:ratings)
+    users_location = Geokit::LatLng.new(params[:lat],params[:lng])
+    @locations = Location.select('locations.*, AVG(ratings.rating) AS overall_rating, COUNT(ratings.rating) AS rating_count')
+                          .within(10, :origin => users_location)
+                          .left_joins(:ratings)
+                          .group('locations.id')
     render 'index.json.jbuilder', status: :ok
   end
 

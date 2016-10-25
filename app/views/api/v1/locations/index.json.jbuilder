@@ -6,8 +6,8 @@ json.locations do json.array! @locations.each do |location|
     json.lng location.lng
   end
   json.name location.name
-  json.rating location.average_rating
-  json.rating_count location.ratings.count
+  json.overall_rating location.overall_rating
+  json.rating_count location.rating_count
   #json.my_rating location.my_rating
 end
 end
