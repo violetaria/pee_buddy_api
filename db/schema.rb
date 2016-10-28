@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025125407) do
+ActiveRecord::Schema.define(version: 20161028000558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,13 @@ ActiveRecord::Schema.define(version: 20161025125407) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.float    "rating",         null: false
-    t.integer  "rating_type_id"
+    t.float    "rating",                  null: false
     t.integer  "location_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "user_id",        null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "user_id",                 null: false
+    t.integer  "category",    default: 1
     t.index ["location_id"], name: "index_ratings_on_location_id", using: :btree
-    t.index ["rating_type_id"], name: "index_ratings_on_rating_type_id", using: :btree
     t.index ["user_id"], name: "index_ratings_on_user_id", using: :btree
   end
 
@@ -56,5 +55,4 @@ ActiveRecord::Schema.define(version: 20161025125407) do
   end
 
   add_foreign_key "ratings", "locations"
-  add_foreign_key "ratings", "rating_types"
 end
