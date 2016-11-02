@@ -1,6 +1,9 @@
 class Rating < ApplicationRecord
-  belongs_to :rating_type
   belongs_to :location
+  belongs_to :user
 
-  validates_presence_of  :rating, :rating_type, :location
+  validates_presence_of  :rating, :location, :user, :category
+  validates_uniqueness_of :user, scope: [:location, :category]
+
+  enum category: [ :overall ]
 end

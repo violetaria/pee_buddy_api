@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :ratings
+  
   before_validation :strip_leading_trailing_spaces, :ensure_authentication_token
 
   validates_presence_of :email, :password_digest
