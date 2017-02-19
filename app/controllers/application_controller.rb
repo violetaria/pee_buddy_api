@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   helper_method :current_user
 
+  before_filter :set_default_response_format
+
   def current_user
     authentication_token = request.headers["token"]
     ## TODO may need to look at DB optimization
@@ -16,5 +18,11 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound do |error|
     render json: { errors: "Object not found: #{error.message}" }, status: :not_found
+  end
+
+  private
+
+  def set_default_response_format
+    request.format = :json
   end
 end
