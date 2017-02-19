@@ -7,7 +7,7 @@ namespace :import do
       puts 'Usage: import:gas_stations state=GA'
       return
     end
-    CSV.foreach('tmp/us_postal_codes.csv', headers: true) do |row|
+    CSV.foreach('lib/tasks/us_postal_codes.csv', headers: true) do |row|
       next unless row['State Abbreviation'].upcase == state
       zip_code = row['Postal Code']
       geo_coded_zip = Geokit::Geocoders::GoogleGeocoder.geocode zip_code
