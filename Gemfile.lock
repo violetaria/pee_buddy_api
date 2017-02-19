@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/geokit/geokit-rails.git
+  revision: 2a5dc8b5c6aa6ecd0f41886a4fa32c64dfddbbce
+  specs:
+    geokit-rails (2.2.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,9 +67,6 @@ GEM
       url_safe_base64
     ffi (1.9.14)
     geokit (1.10.0)
-    geokit-rails (2.2.0)
-      geokit (~> 1.5)
-      rails (>= 3.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     httparty (0.13.7)
@@ -182,7 +187,7 @@ DEPENDENCIES
   byebug
   dotenv-rails
   fb_graph2
-  geokit-rails
+  geokit-rails!
   httparty
   jbuilder (~> 2.5)
   listen (~> 3.0.5)
