@@ -6,7 +6,7 @@ class GooglePlacesApi
   def self.nearby_search(lat,lng,type)
     response = GooglePlacesApi.get("/nearbysearch/json",
     query: { 'location' => "#{lat},#{lng}",
-    'radius'  => '5000',
+    'radius'  => '10000',
     'sensor'  => 'true',
     'types'   => "#{type}",
     'key'     => "#{ENV['GOOGLE_API_KEY']}"})
