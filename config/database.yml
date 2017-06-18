@@ -6,7 +6,7 @@ default: &default
 development:
   <<: *default
   database: peebuddy_development
-  port: 4321
+  port: 5432
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -15,7 +15,7 @@ development:
 test:
   <<: *default
   database: peebuddy_test
-  port: 4321
+  port: 5432
   host: localhost
 
 production:
