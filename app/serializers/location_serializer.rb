@@ -3,6 +3,7 @@ class LocationSerializer < ActiveModel::Serializer
               :place_id,
               :latlng,
               :name,
+              :average_rating
               :created_at,
               :updated_at
 

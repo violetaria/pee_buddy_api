@@ -16,9 +16,10 @@ class Rating < ApplicationRecord
   belongs_to :location
   belongs_to :user
 
-  validates_presence_of  :rating, :rating_type, :location
+  validates_presence_of  :rating, :rating_type, :location, :user
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 
   enum rating_type: {
-    overall: 1
+    cleanliness: 1
   }
 end
