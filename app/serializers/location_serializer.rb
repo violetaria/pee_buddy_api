@@ -12,16 +12,22 @@
 #  created_by_id :integer
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class LocationSerializer < ActiveModel::Serializer
+  attributes  :id,
+              :place_id,
+              :latlng,
+              :name,
+              :average_rating,
+              :created_at,
+              :created_by,
+              :updated_at
 
-one:
-  place_id: MyString
-  lat: 
-  lng: 
-  name: MyString
+  private
 
-two:
-  place_id: MyString
-  lat: 
-  lng: 
-  name: MyString
+  def latlng
+    {
+      lat: object.lat,
+      lng: object.lng
+    }
+  end
+end

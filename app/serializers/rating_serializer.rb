@@ -11,14 +11,11 @@
 #  rating_type :integer
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class RatingSerializer < ActiveModel::Serializer
+  attributes  :id,
+              :rating,
+              :rating_type,
+              :created_at,
+              :updated_at
 
-one:
-  rating: 
-  rating_type: one
-  location: one
-
-two:
-  rating: 
-  rating_type: two
-  location: two
+end

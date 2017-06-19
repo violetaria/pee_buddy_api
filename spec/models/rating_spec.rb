@@ -11,14 +11,8 @@
 #  rating_type :integer
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-one:
-  rating: 
-  rating_type: one
-  location: one
-
-two:
-  rating: 
-  rating_type: two
-  location: two
+RSpec.describe Rating, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

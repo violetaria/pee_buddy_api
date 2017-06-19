@@ -28,7 +28,7 @@ Geokit::Geocoders::request_timeout = 3
 
 # You can also use the free API key instead of signed requests
 # See https://developers.google.com/maps/documentation/geocoding/#api_key
-# Geokit::Geocoders::GoogleGeocoder.api_key = ''
+Geokit::Geocoders::GoogleGeocoder.api_key = ENV['GOOGLE_API_KEY']
 
 # You can also set multiple API KEYS for different domains that may be directed
 # to this same application.
@@ -71,7 +71,7 @@ Geokit::Geocoders::request_timeout = 3
 # Geonames has a free service and a premium service, each using a different URL
 # GeonamesGeocoder.premium = true will use http://ws.geonames.net (premium)
 # GeonamesGeocoder.premium = false will use http://api.geonames.org (free)
-# Geokit::Geocoders::GeonamesGeocoder.premium = false
+Geokit::Geocoders::GeonamesGeocoder.premium = false
 
 # require "external_geocoder.rb"
 # Please see the section "writing your own geocoders" for more information.

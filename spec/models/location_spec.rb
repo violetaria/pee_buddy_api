@@ -12,16 +12,8 @@
 #  created_by_id :integer
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-one:
-  place_id: MyString
-  lat: 
-  lng: 
-  name: MyString
-
-two:
-  place_id: MyString
-  lat: 
-  lng: 
-  name: MyString
+RSpec.describe Location, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end
