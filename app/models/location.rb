@@ -25,6 +25,6 @@ class Location < ApplicationRecord
   validates_uniqueness_of :place_id
 
   def average_rating
-    ratings.average
+    ratings.average(:rating)
   end
 end

@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  skip_before_action :authenticate_user!, except: :create
 
   def create
     @location = Location.new(location_create_params)
@@ -10,7 +11,7 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = Location.includes(:ratings).within(5, origin: [params[:lat],params[:lng]])
+    @locations = Location.includes(:ratings).within(5, origin: [params[:lat], params[:lng]])
     render json: @locations, status: :ok
   end
 
@@ -22,6 +23,8 @@ class LocationsController < ApplicationController
   private
 
   def location_create_params
-    params.require(:location).permit(:place_id, :lat, :lng, :name).merge(created_by: current_user)
+    params.require(:location)
+          .permit(:place_id, :lat, :lng, :name)
+          .merge(created_by: current_user)
   end
 end

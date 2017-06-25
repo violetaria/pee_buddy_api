@@ -1,0 +1,24 @@
+AllCops:
+  Excludes:
+    - db/**
+  TargetRubyVersion: 2.3
+Documentation:
+  Enabled: false
+Metrics/ClassLength:
+  Max: 500
+Metrics/LineLength:
+  Max: 200
+Metrics/MethodLength:
+  Max: 50
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false

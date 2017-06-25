@@ -22,8 +22,6 @@ class LocationSerializer < ActiveModel::Serializer
               :created_by,
               :updated_at
 
-  private
-
   def latlng
     {
       lat: object.lat,
