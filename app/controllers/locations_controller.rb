@@ -12,13 +12,15 @@ class LocationsController < ApplicationController
   end
 
   def index
-    missing_params = ensure_required_params([:ne_lat, :ne_lng, :sw_lat, :sw_lng, :lat, :lng])
+    missing_params = ensure_required_params([:ne_lat, :ne_lng, :sw_lat, :sw_ln])
     if missing_params.any?
       render json: { errors: "#{missing_params.join(', ')} must be provided." }, status: :unprocessable_entity
     else
-      ne_bounds = Geokit::LatLng.new(params[:ne_lat],params[:ne_lng])
-      sw_bounds = Geokit::LatLng.new(params[:sw_lat],params[:sw_lng])
-      @locations = Location.includes(:ratings).within(bounds: [ne_bounds, sw_bounds], origin: [params[:lat], params[:lng]])
+      ne_point = Geokit::LatLng.new(params[:ne_lat],params[:ne_lng])
+      sw_point = Geokit::LatLng.new(params[:sw_lat],params[:sw_lng])
+      bounds = Geokit::Bounds.new(sw_point, ne_point)
+      binding.pry
+      @locations = Location.includes(:ratings).in_bounds(bounds)
       render json: @locations, status: :ok
     end
   end
