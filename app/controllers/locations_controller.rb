@@ -19,7 +19,6 @@ class LocationsController < ApplicationController
       ne_point = Geokit::LatLng.new(params[:ne_lat],params[:ne_lng])
       sw_point = Geokit::LatLng.new(params[:sw_lat],params[:sw_lng])
       bounds = Geokit::Bounds.new(sw_point, ne_point)
-      binding.pry
       @locations = Location.includes(:ratings).in_bounds(bounds)
       render json: @locations, status: :ok
     end
