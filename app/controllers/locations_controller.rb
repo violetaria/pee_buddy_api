@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  include RequiredParams
   skip_before_action :authenticate_user!, except: :create
 
   def create
@@ -11,8 +12,15 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = Location.includes(:ratings).within(5, origin: [params[:lat], params[:lng]])
-    render json: @locations, status: :ok
+    missing_params = ensure_required_params([:ne_lat, :ne_lng, :sw_lat, :sw_lng, :lat, :lng])
+    if missing_params.any?
+      render json: { errors: "#{missing_params.join(', ')} must be provided." }, status: :unprocessable_entity
+    else
+      ne_bounds = Geokit::LatLng.new(params[:ne_lat],params[:ne_lng])
+      sw_bounds = Geokit::LatLng.new(params[:sw_lat],params[:sw_lng])
+      @locations = Location.includes(:ratings).within(bounds: [ne_bounds, sw_bounds], origin: [params[:lat], params[:lng]])
+      render json: @locations, status: :ok
+    end
   end
 
   def show
