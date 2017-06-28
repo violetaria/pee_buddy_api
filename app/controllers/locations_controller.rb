@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
   end
 
   def index
-    missing_params = ensure_required_params([:ne_lat, :ne_lng, :sw_lat, :sw_ln])
+    missing_params = ensure_required_params([:ne_lat, :ne_lng, :sw_lat, :sw_lng])
     if missing_params.any?
       render json: { errors: "#{missing_params.join(', ')} must be provided." }, status: :unprocessable_entity
     else
