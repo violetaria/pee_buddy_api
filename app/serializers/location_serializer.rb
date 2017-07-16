@@ -20,7 +20,12 @@ class LocationSerializer < ActiveModel::Serializer
               :average_rating,
               :created_at,
               :created_by,
-              :updated_at
+              :updated_at,
+              :rating_count
+
+  def rating_count
+    object.ratings.count
+  end
 
   def latlng
     {
