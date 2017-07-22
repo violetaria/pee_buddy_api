@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:email].downcase, password: params[:password])
+    @user = User.find_by(email: params[:email].strip.downcase).try(:authenticate,  params[:password])
     if @user.present?
       render json: @user, status: :ok
     else
@@ -22,6 +22,8 @@ class UsersController < ApplicationController
   private
 
   def create_params
-    params.require(:user).permit(:email, :password)
+    create_params = params.require(:user).permit(:email, :password)
+    create_params[:email] = params[:email].strip.downcase
+    create_params
   end
 end
