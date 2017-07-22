@@ -22,8 +22,6 @@ class UsersController < ApplicationController
   private
 
   def create_params
-    create_params = params.require(:user).permit(:email, :password)
-    create_params[:email] = params[:email].strip.downcase
-    create_params
+    params.require(:user).permit(:email, :password)
   end
 end

@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   has_many :ratings
 
-  before_validation :strip_leading_trailing_spaces, :ensure_authentication_token
+  before_validation :strip_and_downcase_email, :ensure_authentication_token
 
   validates_presence_of :email, :password_digest
   validates_uniqueness_of :email
@@ -55,7 +55,7 @@ class User < ApplicationRecord
     user
   end
 
-  def strip_leading_trailing_spaces
-    self.email = self.email.lstrip.rstrip unless self.email.nil?
+  def strip_and_downcase_email
+    self.email = self.email.strip.downcase unless self.email.nil?
   end
 end
