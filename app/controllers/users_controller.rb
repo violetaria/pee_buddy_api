@@ -11,7 +11,12 @@ class UsersController < ApplicationController
   end
 
   def login
-    render json: @user, status: :accepted
+    @user = User.find_by(email: params[:email].downcase, password: params[:password])
+    if @user.present?
+      render json: @user, status: :ok
+    else
+      render json: { errors: 'User/Password combination not found' }, status: :not_found
+    end
   end
 
   private
