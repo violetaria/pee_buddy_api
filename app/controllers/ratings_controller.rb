@@ -21,7 +21,6 @@ class RatingsController < ApplicationController
   def create_params
     rating_params = params.require(:rating).permit(:location_id, :rating, :rating_type)
     rating_params[:rating_type] = :cleanliness
-    binding.pry
     rating_params
   end
 
