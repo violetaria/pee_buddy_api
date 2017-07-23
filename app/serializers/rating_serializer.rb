@@ -15,6 +15,7 @@ class RatingSerializer < ActiveModel::Serializer
   attributes  :id,
               :rating,
               :rating_type,
+              :location_id,
               :created_at,
               :updated_at
 

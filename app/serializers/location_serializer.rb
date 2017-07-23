@@ -21,7 +21,12 @@ class LocationSerializer < ActiveModel::Serializer
               :created_at,
               :created_by,
               :updated_at,
-              :rating_count
+              :rating_count,
+              :my_rating
+
+  def my_rating
+    current_user.ratings.where(location: object).first if current_user.present?
+  end
 
   def rating_count
     object.ratings.count

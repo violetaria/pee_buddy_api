@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @rating = Rating.new(create_params)
+    @rating = current_user.ratings.new(create_params)
     if @rating.save
       render json: @rating, status: :created
     else
@@ -19,7 +19,10 @@ class RatingsController < ApplicationController
   private
 
   def create_params
-    params.require(:rating).permit(:location_id, :rating, :rating_type)
+    rating_params = params.require(:rating).permit(:location_id, :rating, :rating_type)
+    rating_params[:rating_type] = :cleanliness
+    binding.pry
+    rating_params
   end
 
   def update_params
