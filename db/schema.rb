@@ -32,10 +32,8 @@ ActiveRecord::Schema.define(version: 20170618202918) do
     t.integer  "location_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id",     null: false
     t.integer  "rating_type"
     t.index ["location_id"], name: "index_ratings_on_location_id", using: :btree
-    t.index ["user_id"], name: "index_ratings_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
