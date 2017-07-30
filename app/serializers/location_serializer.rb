@@ -19,7 +19,7 @@ class LocationSerializer < ActiveModel::Serializer
               :name,
               :average_rating,
               :created_at,
-              :created_by,
+              # :created_by,
               :updated_at,
               :rating_count,
               :my_rating
