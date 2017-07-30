@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :ratings
+  has_many :created_locations, foreign_key: :created_by_id, class_name: Location
 
   before_validation :strip_and_downcase_email, :ensure_authentication_token
 
