@@ -5,7 +5,7 @@ class RatingsController < ApplicationController
   def create
     @rating = current_user.ratings.new(create_params)
     if @rating.save
-      render json: @location, status: :created
+      render json: @rating.location, status: :created
     else
       render json: { errors: @rating.errors.messages }, status: :unprocessable_entity
     end
@@ -13,7 +13,7 @@ class RatingsController < ApplicationController
 
   def update
     if @rating.update(update_params)
-      render json: @location, status: :ok
+      render json: @rating.location, status: :ok
     else
       render json: { errors: @rating.errors.messages }, status: :unprocessable_entity
     end
