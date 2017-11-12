@@ -30,7 +30,7 @@ class LocationSerializer < ActiveModel::Serializer
   end
 
   def distance
-    object.distance_from(@bounds.center)
+    object.distance_from(@instance_options[:bounds].center).round(2)
   end
 
   def rating_count
