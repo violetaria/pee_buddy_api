@@ -28,6 +28,10 @@ class LocationSerializer < ActiveModel::Serializer
     current_user.ratings.where(location: object).first if current_user.present?
   end
 
+  def distance
+    object.distance_from(@bounds.center)
+  end
+
   def rating_count
     object.ratings.count
   end
